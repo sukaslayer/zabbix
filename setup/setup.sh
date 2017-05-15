@@ -12,7 +12,7 @@
 
 ZBX_REPO='https://sukaslayer@github.com/sukaslayer/zabbix.git'
 ZBX_HOME=/usr/share/zabbix
-
+mkdir -p $ZBX_HOME
 # Fix wrong SSL certificates from github
 export GIT_SSL_NO_VERIFY=true
 
