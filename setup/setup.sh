@@ -10,7 +10,7 @@
 #  - test new items
 ####################
 
-ZBX_REPO='https://zbal@github.com/zbal/zabbix.git'
+ZBX_REPO='https://sukaslayer@github.com/sukaslayer/zabbix.git'
 ZBX_HOME=/usr/share/zabbix
 
 # Fix wrong SSL certificates from github
@@ -141,7 +141,7 @@ if [ ! -f /etc/zabbix/zabbix_agentd.conf ]; then
     echo " Custom configuration available in $ZBX_HOME/setup/zabbix_agentd-extra.conf"
 else
     echo 'Appending custom UserParameters to zabbix configuration file...'
-    cat $ZBX_HOME/source/setup/zabbix_agentd-extra.conf >> /etc/zabbix/zabbix_agentd.conf
+    cat $ZBX_HOME/source/setup/zabbix_agentd-extra.conf >> /etc/zabbix/zabbix_agentd.d/zabbix_agentd-extra.conf
 fi
 
 ## Restarting agent

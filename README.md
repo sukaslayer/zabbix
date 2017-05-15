@@ -11,10 +11,10 @@ This is a collection of custom scripts developed over time to monitor the essent
 
 All updates / forks / suggestions are more than welcome!
 
-*  vincent.viallet@gmail.com
+*  valery.tereshko 4T gmail.com
 
 # Credits
-
+* forked from vincent.viallet@gmail.com / https://github.com/zbal/zabbix
 * [__ChinaNetCloud__](http://www.chinanetcloud.com); they made me discover Zabbix and I developed a huge amount of custom scripts (so custom that it can't always be shared :)),
 * [__Wiredcraft__](http://wiredcraft.com); they made me re-think, review and even entirely rewrite most of my scripts and jump to another level.
 
@@ -30,7 +30,7 @@ To make it simple, develop for real-time, do not worry about the amount of queri
 
 (Almost) one liner install script, as root...
 
-<code>curl -k https://raw.github.com/zbal/zabbix/master/setup/setup.sh > zabbix_setup.sh && bash zabbix_setup.sh; rm -f zabbix_setup.sh</code>
+<code>curl -k https://raw.github.com/sukaslayer/zabbix/master/setup/setup.sh > zabbix_setup.sh && bash zabbix_setup.sh; rm -f zabbix_setup.sh</code>
 
 (And yes, rm -f the script 'cause any existing zabbix_setup.sh file you may had has been overridden and is worth nothing anyway!)
 

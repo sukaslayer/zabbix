@@ -30,7 +30,7 @@ ZBX_REQ_DATA_SOURCE="$2"
 MYSQL_ACCESS="/usr/share/zabbix/conf/my.cnf"
 MYSQL_BIN="/usr/bin/mysql"
 
-#MYSQL="$MYSQL_BIN --defaults-extra-file=$MYSQL_ACCESS --skip-column"
+#MYSQL="$MYSQL_BIN --defaults-extra-file=$MYSQL_ACCESS --skip-column-names"
 MYSQL="$MYSQL_BIN --defaults-extra-file=$MYSQL_ACCESS"
 
 #
@@ -72,13 +72,13 @@ fi
 
 get_from_status(){
   param=$1
-  value=$(echo "show global status like '$param'" | $MYSQL --skip-column | awk '{print $2}')
+  value=$(echo "show global status like '$param'" | $MYSQL --skip-column-names | awk '{print $2}')
   [ -z "$value" ] && echo $ERROR_WRONG_PARAM || echo $value
 }
 
 get_from_variables(){
   param=$1
-  value=$(echo "show global variables like '$param'" | $MYSQL --skip-column | awk '{print $2}')
+  value=$(echo "show global variables like '$param'" | $MYSQL --skip-column-names | awk '{print $2}')
   [ -z "$value" ] && echo $ERROR_WRONG_PARAM || echo $value
 }
 
@@ -96,9 +96,9 @@ get_from_slave(){
 
 get_from_innodb_file(){
   param=$1
-  datadir=$($MYSQL --skip-column --silent -e "show global variables like 'datadir';" | awk '{print $2}')
+  datadir=$($MYSQL --skip-column-names --silent -e "show global variables like 'datadir';" | awk '{print $2}')
     if [ -z "$datadir" -o ! -e "$datadir" ]; then echo $ERROR_GENERIC; exit 1; fi
-  pid_file=$($MYSQL --skip-column --silent -e "show global variables like 'pid_file';" | awk '{print $2}')
+  pid_file=$($MYSQL --skip-column-names --silent -e "show global variables like 'pid_file';" | awk '{print $2}')
     if [ -z "$pid_file" ]; then echo $ERROR_GENERIC; exit 1; fi;
     if sudo /usr/bin/test ! -e "$pid_file" ; then echo $ERROR_GENERIC; exit 1; fi;
   innodb_file=$datadir/innodb_status.$(sudo /bin/cat $pid_file)
